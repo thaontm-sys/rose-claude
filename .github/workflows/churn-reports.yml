@@ -1,0 +1,54 @@
+name: Churn reports
+
+on:
+  schedule:
+    - cron: "17 1 * * *"   # hằng ngày 08:17 giờ Việt Nam
+    - cron: "43 1 * * 1"   # thứ Hai 08:43 giờ Việt Nam: báo cáo tuần
+  workflow_dispatch:
+    inputs:
+      period:
+        description: daily hoặc weekly
+        default: daily
+
+permissions:
+  contents: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Chọn loại báo cáo
+        id: p
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "period=${{ github.event.inputs.period }}" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "43 1 * * 1" ]; then
+            echo "period=weekly" >> "$GITHUB_OUTPUT"
+          else
+            echo "period=daily" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Tạo báo cáo
+        env:
+          SHOPIFY_PARTNER_ORG_ID: ${{ secrets.SHOPIFY_PARTNER_ORG_ID }}
+          SHOPIFY_PARTNER_TOKEN: ${{ secrets.SHOPIFY_PARTNER_TOKEN }}
+          SHOPIFY_APP_ID: ${{ secrets.SHOPIFY_APP_ID }}
+          CRISP_IDENTIFIER: ${{ secrets.CRISP_IDENTIFIER }}
+          CRISP_KEY: ${{ secrets.CRISP_KEY }}
+          CRISP_WEBSITE_ID: ${{ secrets.CRISP_WEBSITE_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python -m churn_toolkit --period "${{ steps.p.outputs.period }}"
+      - name: Lưu báo cáo vào repo
+        run: |
+          git config user.name "churn-bot"
+          git config user.email "churn-bot@users.noreply.github.com"
+          git add reports data || true
+          git commit -m "Report ${{ steps.p.outputs.period }} $(date -u +%F)" || echo "Không có thay đổi"
+          git push
