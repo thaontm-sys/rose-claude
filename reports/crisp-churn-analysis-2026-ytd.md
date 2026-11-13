@@ -1,7 +1,7 @@
 # Phân tích churn từ Crisp: 1/1/2026 – 13/11/2026
 
-**Nguồn:** Crisp workspace EComposer, đọc qua kết nối MCP ngày 13/11/2026.
-**Dữ liệu từng ca:** `reports/data/crisp-churn-cases-2026.csv` (đã bỏ tên, email, tên shop; giữ mã hội thoại Crisp để team tra lại).
+**Nguồn:** Crisp workspace EComposer, đọc qua kết nối MCP, cập nhật ngày 13/11/2026.
+**Dữ liệu từng ca:** `reports/data/crisp-churn-cases-2026.csv` — có domain cửa hàng (khi xác định được) và link mở thẳng hội thoại trong Crisp cho cả 31 ca; bảng trích dẫn nguyên văn cho các ca đã đối chiếu kỹ ở mục 3.4. Đã bỏ tên và email cá nhân của khách trong phần văn bản báo cáo.
 
 ---
 
@@ -13,8 +13,13 @@
 4. **Trong 3 review thấp sao tìm thấy, 2 review nói thẳng nguyên nhân là cách xử lý refund**, và cả hai đều của khách đã dùng app 3 năm. Review còn lại do lỗi mất ảnh.
 5. **Email hỏi lý do sau khi gỡ app gần như không ai trả lời.** Trong khoảng 30 email gửi tháng 10 mà tôi thấy, không có ca nào có phản hồi.
 6. **Đối thủ chảy cả hai chiều.** Có khách sang PageFly, nhưng cũng có khách bỏ gói GemPages €158/tháng để sang EComposer vì khả năng dựng trang bằng AI. Crisp chưa cho thấy Horizon/Sidekick là lý do rời bỏ, nhưng nhóm này thường bỏ đi mà không nhắn support.
+7. **Cùng một cửa hàng, cùng một đối tác tích hợp (Kaching Bundles) gây sự cố chặn publish 2 lần trong năm** (tháng 1 và vừa xảy ra ngày 1/11/2026), lần sau khách nói thẳng sẽ quay lại GemPages — xem mục 4.7. Đây là ví dụ thời gian thực về rủi ro mất khách kỹ thuật, không phải suy đoán.
+
+Mục 3.4 có bảng domain cửa hàng, link mở thẳng hội thoại và trích dẫn nguyên văn cho 20 trong 31 ca; mục 5.1 phân nhóm 4 chân dung khách hàng lặp lại rõ nhất.
 
 > **Đọc các con số thế nào:** đây là mẫu 31 ca được tìm bằng từ khoá và đọc toàn văn, không phải thống kê toàn bộ. Tỉ lệ cho biết *vấn đề nào lặp lại*, không cho biết *tỉ lệ churn thật*. Xem mục 2.
+
+> **Vì sao mẫu chỉ có 31 ca, không phải cả nghìn ca của năm 2026:** không phải vì Crisp nghèo dữ liệu — workspace này rõ ràng có hàng nghìn hội thoại trong năm. Vấn đề nằm ở công cụ tìm kiếm mà tôi dùng để truy cập Crisp: mỗi lượt tìm chỉ trả về khoảng 40 kết quả xếp theo độ liên quan, không có cách lọc theo ngày hay đếm tổng số. Tôi đã chạy hơn 50 lượt tìm với các từ khoá khác nhau (gồm tiếng Anh, Pháp, Tây Ban Nha) trong hai phiên làm việc, nhưng phần lớn các lượt tìm mới chỉ lặp lại cùng một nhóm ~150–200 hội thoại đã thấy trước đó, chứ không đào sâu thêm được vào phần còn lại của năm. Tìm theo nhãn có sẵn của Crisp (`refund`, `1 star`, `difficult customer`...) cũng được thử nhưng trả về kết quả gần như giống hệt nhau bất kể nhãn nào, nên không dùng để lọc chính xác được. Cách duy nhất để lấy **toàn bộ** là bạn tự vào Crisp, dùng bộ lọc nhãn + khoảng ngày trong giao diện (team bạn đang đăng nhập nên có quyền này, tôi thì không), xuất CSV rồi gửi tôi đọc tiếp — hoặc đối chiếu bằng số liệu cài/gỡ thật từ Partner API khi có token.
 
 ---
 
@@ -32,7 +37,7 @@
 |---|---|
 | Mỗi lượt tìm Crisp chỉ trả về ~40 kết quả mới nhất, không lọc được theo ngày | Mẫu **lệch về tháng 9–11** (12/31 ca rơi vào tháng 10). Không dùng bảng theo tháng để kết luận churn tăng hay giảm. Tháng 3 không có ca nào trong mẫu, nhiều khả năng do tìm không tới chứ không phải không có. |
 | Tìm bằng từ khoá refund/cancel | Mẫu **lệch về tranh chấp hoá đơn** và về khách trả phí. Khách Free gỡ app thường không nhắn support. |
-| Tìm theo nhãn (segment) của Crisp không hoạt động qua kết nối này | Không đếm được theo các nhãn sẵn có như `refund`, `uninstalled`, `1 star`. |
+| Tìm theo nhãn (segment) của Crisp qua kết nối này trả về kết quả gần như giống hệt nhau dù đổi nhãn | Không tin cậy được để đếm chính xác theo các nhãn sẵn có như `refund`, `uninstalled`, `1 star`, `difficult customer`. Có thể là giới hạn của kết nối, không hẳn là nhãn đó trống — team bạn nên tự thử lọc nhãn này ngay trong giao diện Crisp để đối chiếu. |
 | Thư thông báo review của Shopify có về Crisp, nhưng không lọc được theo số sao | Chỉ bắt được 3 review thấp sao. Muốn đủ cần đọc trực tiếp trang review. |
 | Crisp không có dữ liệu cài/gỡ/doanh thu | Không tính được tỉ lệ churn, free-to-paid hay MRR. Cần Partner API. |
 
@@ -75,6 +80,35 @@
 | Không rõ kết cục | 3 |
 
 Cả 3 ca hoàn toàn bộ đều xảy ra **sau khi khách leo thang**: một ca nhắn suốt 6 ngày và doạ review xấu, một ca gửi liên tiếp nhiều thư gay gắt trong 1 ngày, một ca đã đăng review 2★.
+
+### 3.4 Bằng chứng theo ca: cửa hàng, link hội thoại, trích dẫn nguyên văn
+
+Mỗi dòng dưới đây tôi đã tự tay mở lại và đối chiếu trong phiên làm việc này — domain và trích dẫn lấy nguyên văn từ hội thoại, không diễn giải lại. Với ca nào tôi **không** xác định được domain từ nội dung đã đọc (ví dụ khách chỉ dùng email cá nhân, không nhắc tên miền), tôi ghi rõ "không xác định" thay vì đoán. Bấm vào "Mở trong Crisp" để vào thẳng hội thoại gốc — cần đăng nhập Crisp của team để xem.
+
+Với 11 ca còn lại trong bảng dữ liệu đầy đủ (`reports/data/crisp-churn-cases-2026.csv`) mà tôi chưa đối chiếu lại domain/trích dẫn trong lượt này, cột "Link Crisp" trong file CSV vẫn đủ để bạn tự mở.
+
+| Ca | Cửa hàng / domain | Trích dẫn nguyên văn | Link Crisp |
+|---|---|---|---|
+| C01 | trippycreations.co.uk (Trippy Creations, Somerset UK) | *"I find it funny how any other reply is instant. But billing is mysteriously not taken into high priority when you're charging customers for what theyre not using"* | [Mở](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_6ada9c89-522b-4f2b-9f4b-fa881a9ef8a6/) |
+| C02 | olamiahaven.com (Olamia Haven) | *"I am pausing my store due to inventory issues and wanted to pause billing as well"* | [Mở](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_0183a7c6-8cfc-4e6a-ba30-d577abb6d2f5/) |
+| C03 | không xác định (chỉ có email cá nhân @email.cz) | *"im switching to pagefly since it's more comfortable for my new dev"* | [Mở](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_e615aebf-19ad-4b0f-b33d-921effee607a/) |
+| C04 | 0xp2gb-ui.myshopify.com | *"I had already uninstalled the application from my Shopify store and canceled my subscription prior to these dates, and I have not used the service at all during this period."* | [Mở](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_a746a8e3-d3fe-4aa0-a408-98f1051a4261/) |
+| C05 | miraeeparis.de | *"the app never worked and I was never able to use it. This is completely unacceptable."* | [Mở](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_d36aa912-d442-46f3-b4ae-e70bf9ed6b2d/) |
+| C06 | gripculture.store | *"I'm based in the UK (BST) and I downgraded on 23 April… Since I downgraded before the cancellation date, I shouldn't have been charged at the paid rate for those days."* | [Mở](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_5ae08fcc-6ad6-4410-b71e-2ade344d054a/) |
+| C07 | sleepcityusa.com — ghi chú AI của Crisp: shop 36 tháng tuổi, doanh thu TB **~$5.240/tháng**, **~21.000 phiên/30 ngày**, `potential_score: 68`, `priority_level: critical` | *"i'm making an apple quality landing page for a tv ad… Is it possible for me to just be refunded? I use another page builder I was just trying to try this one out"* | [Mở](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_5bbdd508-8efa-45d0-8dbe-4d94c5390759/) |
+| C08 | hairsolutions.co | *"My finances are very limited, and I cannot afford your app anymore"* | [Mở](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_dbc845b0-7caa-40c3-93df-88e75f047851/) |
+| C09 | không xác định (email cá nhân) | *"vous devez me rembourser… voleur"* (bạn phải hoàn tiền cho tôi… quân trộm cắp) | [Mở](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_4e819881-bcea-4815-913d-1eb5002ee968/) |
+| C15 | mybreezelife.com (Breeze Life Products) | *"I want to cancel this service as I don't even know what it's doing. However, no one can tell me if the store will crash if I do."* | [Mở](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_e89deecd-ec28-47f0-b048-578fe1ce6b61/) |
+| C18 | dareurebl.com (Soraya Obaze) | *"i am rearranging my business & the app is complicated too use, plus i have more urgent financial responsibilities"* | [Mở](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_907bcf5c-7aa9-48fd-ac9d-cdc86f5e9267/) |
+| C19 | nivalisorigins.com (xem thêm vụ việc mới 1/11 ở mục 4.7) | *"stopped using gempages for your services because I like it, but now I'm blocked and want to use gempage back"* (trích từ ca mới 1/11, cùng cửa hàng) | [Mở](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_593a1c88-264e-46a7-98e3-de10293bb76c/) |
+| C20 | alcovehair.com | *"Also, I would really appreciate it if you could clarify what about your experience with our app led you to decide not to continue the ecomposer"* (email tự động, khách không trả lời) | [Mở](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_36092420-5753-4975-bc63-78010ddbda19/) |
+| C21 | swaycurtains.com.au (Scarlet's Way Australia) | khảo sát gỡ app ghi lý do: *"Too expensive, Not using app now"* | [Mở](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_50453342-aa1e-4018-95b6-d1571e413eb9/) |
+| C23 | avianhaven.ca (Avian Haven) | email tự động không có phản hồi từ khách | [Mở](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_33560c7e-6bd1-45c2-b261-63cee5a55db7/) |
+| C25 | mdnpw0-as.myshopify.com (Elevate) | *"Hello, I've cancelled the subscription 5 days after paying, can I get a refund."* | [Mở](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_cbf8cac1-d0a4-4b2d-9a0a-be7ee5f71b45/) |
+| C26 | hottimesauces.com | *"Ugh, this is all very confusing to me. My developer installed this app, not me. Thank you for your help but I am going to get this app uninstalled and let them worry about it."* | [Mở](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_afb65e32-5930-4c8f-87be-40a024186fac/) |
+| C28 | pawpalspuppyyoga.com (Pawpals Yoga) | *"I appreciate the follow-up, but more guidance doesn't solve anything for me. I've already rebuilt the site and won't be using EComposer going forward."* | [Mở](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_731d0b5d-5dfc-4ad9-8329-11c349b86777/) |
+| C29 | 55f512-3.myshopify.com, storefront euphoricfinds.com | *"unfortunately I cannot afford it"* | [Mở](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_acd08a07-1c4e-47d9-a514-fdf1a4ccf34b/) |
+| C30 | amethystsunco.myshopify.com (Amethyst Sun) — review 1★ công khai trên Shopify App Store | *"I stopped using EComposer because I could no longer edit on mobile… Then I got charged $25 anyway… The nerve of asking for feedback and then dismissing the answer is unbelievable."* | [Mở](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_0558ccc2-d5fe-451f-ac66-f615b7523aa1/) |
 
 ---
 
@@ -177,6 +211,11 @@ AI vừa là lý do khách đến (xem 4.6), vừa là nơi khách bỏ đi nhan
 ### 4.7 Tích hợp bên thứ ba và gỡ app không sạch
 
 - **Kaching Bundles** (tháng 1): lỗi điều hướng sang checkout. Support kết luận lỗi thuộc về app kia và đề nghị khách tự liên hệ. Khách này đang định giới thiệu EComposer cho một nhóm 1.000 merchant.
+- **Kaching Bundles, lần nữa — vừa xảy ra ngày 1/11/2026, cùng một cửa hàng (nivalisorigins.com, cũng là C19 ở mục 3.4).** Khách report: *"Hello, I do not understand why adding Kaching bundle break my page, It does not save"*. Trang bị kẹt ở trạng thái lưu vô hạn khi gắn Kaching Bundle. Điều làm ca này đáng chú ý:
+  - Khách đang **chạy quảng cáo** và cần publish trang trong vài giờ: *"I need to publish my pages using kaching bundle in few hours… this is quite blocking… I do ads on them"*.
+  - Khách nói thẳng sẽ **quay lại GemPages** — chính app họ đã rời bỏ để sang EComposer (xem câu chuyện gốc ở mục 4.6): *"stopped using gempages for your services because I like it, but now I'm blocked and want to use gempage back"*.
+  - Support đề nghị giải pháp tạm (nhúng embed code) nhưng Kaching Bundles không hỗ trợ embed code, nên không dùng được.
+  - Dev team sửa xong sau **~24 giờ** (báo cáo lúc 00:50 ngày 2/11), kịp trước khi khách rời hẳn — nhưng đây là lần **thứ hai trong năm** cùng một đối tác tích hợp (Kaching Bundles) gây sự cố chặn publish, và lần đầu (tháng 1) kết thúc bằng việc đẩy trách nhiệm sang cho app kia thay vì EComposer chủ động sửa. Nếu Kaching Bundles là một tích hợp phổ biến với khách dùng EComposer, đây là ứng viên hàng đầu cho danh sách ưu tiên tương thích ở khuyến nghị #18.
 - **Gỡ app còn sót code** (tháng 7): khách gỡ app, code còn trong theme. Mất 3 ngày, phải cài lại app, nút Reset bị lỗi, hướng dẫn thiếu bước. *"les 2 autres applications auxquelles j'ai fait exactement la même requête ont tout réglé super rapidement."*
 
 ---
@@ -194,6 +233,26 @@ Hai nhận xét:
 
 - **Khách mới rời đi vì sản phẩm, khách cũ rời đi vì tiền và vì cách được đối xử lúc ra đi.**
 - Khách lâu năm kỳ vọng được châm chước: *"I have been a good client for many years"*, *"Mind you, I've been loyal this app for over 3 years."* Áp cùng một chính sách cứng cho khách 3 năm và khách 3 ngày là nguyên nhân trực tiếp của 2 trong 3 review thấp sao.
+
+### 5.1 Chân dung khách hàng rời bỏ (customer persona)
+
+Đây là 4 nhóm lặp lại rõ nhất trong 31 ca, dựng từ hành vi và lời khách nói trong chat — **không** phải phân khúc thống kê chính thức (muốn vậy cần dữ liệu đầy đủ từ Partner API). Mỗi persona kèm ca minh hoạ cụ thể để team đối chiếu.
+
+**1. "Ngân sách eo hẹp" — shop nhỏ, mới, hoặc đang khó khăn tài chính**
+Đặc điểm: tự nói thẳng về khó khăn tiền bạc, không phàn nàn chất lượng app. Thường ở gói Standard/Pro giá thấp nhất. Ví dụ rõ nhất là **C17** (mục 3.4 không có, xem mục 4.5): shop mới 9 ngày tuổi, doanh thu $0, chỉ 205 phiên truy cập/30 ngày, hệ thống của Crisp tự chấm `potential_score: 8` — vậy mà vẫn được mời nâng cấp lên gói Basic. Nhóm này chiếm phần lớn trong 8 ca "giá/tài chính" ở mục 3.1. Mã giảm giá 20%/6 tháng gần như không có tác dụng vì vấn đề không phải mức giá mà là **có tiền hay không**.
+*Việc nên làm:* gói "tạm dừng" giữ dữ liệu giá rẻ (khuyến nghị #10); không gợi ý nâng cấp cho shop $0 doanh thu.
+
+**2. "Khách lâu năm bị đối xử như khách mới" — dùng app ≥ 1 năm, gặp đúng lúc chính sách cứng**
+Đặc điểm: nhắc tuổi quan hệ như một lý lẽ ("3 years", "26 months", "good client for many years"), kỳ vọng được linh hoạt, phản ứng mạnh khi bị từ chối theo đúng quy trình chung. Ví dụ: **C08** (hairsolutions.co, 26 tháng — mục 3.4), **C30** (Amethyst Sun, 3 năm, review 1★ — mục 3.4), ca review 3★ ở mục 4.1 (khách 3 năm). Đây là nhóm **gây thiệt hại thương hiệu lớn nhất trên mỗi ca** dù số lượng không nhiều, vì họ viết review công khai, chi tiết, và nêu tên nhân viên.
+*Việc nên làm:* khuyến nghị #6 (Lead CS tự quyết hoàn 1 chu kỳ cho khách ≥12 tháng không cần duyệt).
+
+**3. "Người mới tiếp quản, không phải người cài app"** — chủ shop, nhân viên mới, hoặc agency vừa nhận bàn giao
+Đặc điểm: không biết app đang dùng để làm gì, không có ngữ cảnh để đánh giá giá trị, quyết định gỡ chỉ vì không hiểu. Ví dụ: **C15** (mybreezelife.com — *"I don't even know what it's doing"*), **C26** (hottimesauces.com — *"My developer installed this app, not me"*). Nhóm này không phải khách giận dữ, chỉ đơn giản là **không có đủ thông tin để giữ app lại**.
+*Việc nên làm:* khuyến nghị #13 (trang/email tóm tắt "app này đang mang lại gì cho shop bạn": số trang đang chạy, lượt xem, đơn hàng).
+
+**4. "Agency/dev nhiều công cụ, có hiểu biết kỹ thuật"** — thường dùng song song PageFly/GemPages, phản hồi chi tiết, kỳ vọng cao về độ ổn định
+Đặc điểm: không nhạy cảm về giá, nhưng **cực kỳ nhạy cảm về lỗi chặn công việc**, đặc biệt khi có quảng cáo đang chạy. Ví dụ rõ nhất là **C19 — nivalisorigins.com** (mục 4.7): khách này đã *rời GemPages để sang EComposer* vì thích khả năng dựng trang bằng AI, nhưng khi gặp lỗi Kaching Bundles chặn publish lúc đang chạy ads, lập tức nói sẽ quay lại GemPages. Nhóm này là nguồn feature request tốt (ví dụ đề nghị tài liệu `.ecom` cho AI ở khuyến nghị #16) nhưng cũng là nhóm **rời bỏ nhanh nhất khi có sự cố kỹ thuật tái diễn**, vì họ có sẵn phương án thay thế quen thuộc.
+*Việc nên làm:* ưu tiên sửa triệt để các lỗi tích hợp lặp lại (khuyến nghị #18), không chỉ đẩy trách nhiệm sang app đối tác.
 
 ---
 
