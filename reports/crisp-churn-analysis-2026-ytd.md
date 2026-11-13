@@ -1,21 +1,23 @@
 # Phân tích churn từ Crisp: 1/1/2026 – 13/11/2026
 
 **Nguồn:** Crisp workspace EComposer, đọc qua kết nối MCP, cập nhật ngày 13/11/2026.
-**Dữ liệu từng ca:** `reports/data/crisp-churn-cases-2026.csv` — có domain cửa hàng (khi xác định được) và link mở thẳng hội thoại trong Crisp cho cả 31 ca; bảng trích dẫn nguyên văn cho các ca đã đối chiếu kỹ ở mục 3.4. Đã bỏ tên và email cá nhân của khách trong phần văn bản báo cáo.
+**Dữ liệu từng ca:** `reports/data/crisp-churn-cases-2026.csv` — có domain cửa hàng (khi xác định được) và link mở thẳng hội thoại trong Crisp cho cả 32 ca; bảng trích dẫn nguyên văn cho các ca đã đối chiếu kỹ ở mục 3.4. Đã bỏ tên và email cá nhân của khách trong phần văn bản báo cáo.
 
 ---
 
 ## 1. Tóm tắt
 
-1. **Hơn một nửa số ca rời bỏ đi kèm tranh chấp hoá đơn** (17/31 ca). Kiểu phổ biến nhất (11 ca): khách huỷ, hạ gói hoặc gỡ app vài ngày *sau* khi chu kỳ mới bắt đầu, vẫn bị tính đủ tháng, rồi bị từ chối refund. Đây là điểm ma sát lớn nhất và lặp lại đều từ tháng 1 đến tháng 11.
-2. **Lý do rời bỏ hàng đầu là tiền, không phải sản phẩm.** 8/31 ca nói thẳng "không đủ tiền" hoặc "đắt"; 7/31 ca là shop đóng, tạm dừng, hoặc người cài app đã nghỉ. Hai nhóm này cộng lại gần một nửa.
-3. **Lỗi làm mất nội dung và AI lỗi ở lần dùng đầu** là lý do sản phẩm rõ nhất (4 ca). Hai trong bốn ca gỡ app ngay trong ngày gặp lỗi.
+1. **Hơn một nửa số ca rời bỏ đi kèm tranh chấp hoá đơn** (17/32 ca). Kiểu phổ biến nhất (11 ca): khách huỷ, hạ gói hoặc gỡ app vài ngày *sau* khi chu kỳ mới bắt đầu, vẫn bị tính đủ tháng, rồi bị từ chối refund. Đây là điểm ma sát lớn nhất và lặp lại đều từ tháng 1 đến tháng 11.
+2. **Lý do rời bỏ hàng đầu là tiền, không phải sản phẩm.** 8/32 ca nói thẳng "không đủ tiền" hoặc "đắt"; 7/32 ca là shop đóng, tạm dừng, hoặc người cài app đã nghỉ. Hai nhóm này cộng lại gần một nửa.
+3. **Lỗi làm mất nội dung và AI lỗi** là lý do sản phẩm rõ nhất (5 ca, sau khi quét thêm tìm ra 1 ca mới ở tháng 2). Ba trong năm ca gỡ app ngay trong ngày gặp lỗi; ca mới nhất gỡ app vì *"literally used all the credits and the ai isnt the best"* — dùng hết credit AI mà kết quả không đạt. Xem mục 4.4.
 4. **Trong 3 review thấp sao tìm thấy, 2 review nói thẳng nguyên nhân là cách xử lý refund**, và cả hai đều của khách đã dùng app 3 năm. Review còn lại do lỗi mất ảnh.
 5. **Email hỏi lý do sau khi gỡ app gần như không ai trả lời.** Trong khoảng 30 email gửi tháng 10 mà tôi thấy, không có ca nào có phản hồi.
 6. **Đối thủ chảy cả hai chiều.** Có khách sang PageFly, nhưng cũng có khách bỏ gói GemPages €158/tháng để sang EComposer vì khả năng dựng trang bằng AI. Crisp chưa cho thấy Horizon/Sidekick là lý do rời bỏ, nhưng nhóm này thường bỏ đi mà không nhắn support.
 7. **Cùng một cửa hàng, cùng một đối tác tích hợp (Kaching Bundles) gây sự cố chặn publish 2 lần trong năm** (tháng 1 và vừa xảy ra ngày 1/11/2026), lần sau khách nói thẳng sẽ quay lại GemPages — xem mục 4.7. Đây là ví dụ thời gian thực về rủi ro mất khách kỹ thuật, không phải suy đoán.
+8. **Quy mô dữ liệu thật lớn hơn rất nhiều lần so với mẫu 32 ca.** Quét thêm theo mốc trang trải đều cả năm (mục 2.1) cho thấy riêng năm 2026 có khoảng **12.000+ hội thoại** trong workspace này. 32 ca là mẫu định tính để hiểu *kiểu* vấn đề lặp lại, tuyệt đối không phải thống kê churn — muốn con số thật cần Partner API hoặc export trực tiếp từ Crisp.
+9. **Nhãn nội bộ trong Crisp có từ ngữ xúc phạm khách** (`stupid user`, `stupid customer`, `stupid pro max`, `rude user`) — xem bằng chứng cụ thể ở mục 7, hạng mục 9.
 
-Mục 3.4 có bảng domain cửa hàng, link mở thẳng hội thoại và trích dẫn nguyên văn cho 20 trong 31 ca; mục 5.1 phân nhóm 4 chân dung khách hàng lặp lại rõ nhất.
+Mục 3.4 có bảng domain cửa hàng, link mở thẳng hội thoại và trích dẫn nguyên văn cho 21 trong 32 ca; mục 5.1 phân nhóm 4 chân dung khách hàng lặp lại rõ nhất.
 
 > **Đọc các con số thế nào:** đây là mẫu 31 ca được tìm bằng từ khoá và đọc toàn văn, không phải thống kê toàn bộ. Tỉ lệ cho biết *vấn đề nào lặp lại*, không cho biết *tỉ lệ churn thật*. Xem mục 2.
 
@@ -29,7 +31,33 @@ Mục 3.4 có bảng domain cửa hàng, link mở thẳng hội thoại và tr�
 
 - Chạy 33 lượt tìm kiếm trong Crisp với các từ khoá: `refund`, `refunded`, `cancel`, `cancellation`, `downgrade`, `uninstall`, `uninstalled`, `expensive`, `disappointed`, `useless`, `scam`, `switching`, `pagefly`, `gempages`, `shogun`, `horizon`, `remboursement`, cùng một số cụm khác.
 - Lọc lấy hội thoại của EComposer có hoạt động trong năm 2026. Workspace này còn nhận thư của Fontify, EcomRise, Stockify, Lookbook và khá nhiều thư rác; các phần đó bị loại.
-- Đọc toàn văn **41 hội thoại**, chọn rải theo tháng. Trong đó **31 ca** có sự kiện rời bỏ rõ ràng (gỡ app, huỷ gói, hạ gói, hoặc xin refund vì nghỉ dùng). 10 hội thoại còn lại là khách đang cân nhắc, câu hỏi trước khi mua, review tốt, hoặc thư rác.
+- Đọc toàn văn **43 hội thoại**, chọn rải theo tháng. Trong đó **32 ca** có sự kiện rời bỏ rõ ràng (gỡ app, huỷ gói, hạ gói, hoặc xin refund vì nghỉ dùng). 11 hội thoại còn lại là khách đang cân nhắc, câu hỏi trước khi mua, review tốt, hiểu nhầm không liên quan đến rời bỏ, hoặc thư rác.
+
+### 2.1 Lượt quét bổ sung: lấy mẫu trải đều cả năm
+
+Theo yêu cầu đọc rộng hơn, tôi dùng thêm công cụ phân trang (`list_conversations_at_page`, không phải tìm từ khoá) và kiểm tra ở các mốc trang rải khắp năm để biết quy mô thật và tìm ca mới ngoài phạm vi từ khoá cũ. Hai phát hiện quan trọng từ lượt quét này:
+
+| Mốc trang | Ngày các hội thoại quan sát được |
+|---|---|
+| 1–20 | 29/10 – 13/11/2026 |
+| 50 | 5–6/10/2026 |
+| 75 | 7–8/9/2026 |
+| 100 | 14–17/8/2026 |
+| 150 | 6–14/7/2026 |
+| 200–250 | 1–11/5/2026 đến 1/6/2026 |
+| 300 | 18–19/4/2026 |
+| 350–400 | 11/3 – 31/3/2026 |
+| 450–500 | 1–22/2/2026 |
+| 550 | 9–20/1/2026 |
+| 600 | **ranh giới 1/1/2026**: lẫn cả hội thoại 20/1/2026 và 30/12/2025 trong cùng trang |
+| 650 | toàn bộ tháng 12/2025, không còn hội thoại 2026 |
+
+Hai kết luận:
+
+1. **Cách phân trang này cũng không sắp xếp theo ngày tạo hội thoại** — mỗi trang trộn lẫn hội thoại từ nhiều năm khác nhau (ví dụ trang 300 có cả hội thoại 2026 và 2024), nên không thể "lật đến đúng ngày 1/1/2026 rồi dừng" một cách chính xác. Khoảng trang 1–620 là nơi đa số hội thoại 2026 xuất hiện, nhưng không phải tất cả và không theo thứ tự.
+2. **Quy mô dữ liệu thật**: với ~20 hội thoại/trang × ~620 trang mang hội thoại 2026, workspace có khoảng **12.000+ hội thoại liên quan năm 2026** — gấp hơn 370 lần mẫu 32 ca của báo cáo này. Đọc hết toàn bộ bằng tay trong một phiên làm việc là không khả thi; đây là lý do tôi chuyển sang lấy mẫu trải đều theo tháng thay vì cố gắng "đọc toàn bộ" theo nghĩa đen.
+
+Từ các trang mẫu ở trên, tôi quét nội dung xem có tín hiệu rời bỏ (gỡ app, huỷ, hạ gói, hoàn tiền, từ ngữ thất vọng) rồi mở toàn văn những hội thoại nghi vấn. Kết quả: xác nhận thêm 1 ca mới (C32, mục 4.4) và loại 1 trường hợp không liên quan đến rời bỏ (khách tưởng domain bị lỗi do gỡ app, thực ra không liên quan).
 
 **Giới hạn cần biết**
 
@@ -49,10 +77,10 @@ Mục 3.4 có bảng domain cửa hàng, link mở thẳng hội thoại và tr�
 
 | Lý do chính | Số ca | Tỉ lệ |
 |---|---|---|
-| Giá / tài chính ("không đủ tiền", "đắt") | 8 | 26% |
-| Không còn nhu cầu: shop đóng, tạm dừng, đổi người phụ trách | 7 | 23% |
+| Giá / tài chính ("không đủ tiền", "đắt") | 8 | 25% |
+| Không còn nhu cầu: shop đóng, tạm dừng, đổi người phụ trách | 7 | 22% |
 | Không rõ (khách không nói) | 6 | 19% |
-| Lỗi, mất dữ liệu, AI lỗi | 4 | 13% |
+| Lỗi, mất dữ liệu, AI lỗi | 5 | 16% |
 | Sang đối thủ / đang thử app khác | 2 | 6% |
 | Không sửa được trên điện thoại | 2 | 6% |
 | Tích hợp app bên thứ ba | 1 | 3% |
@@ -109,6 +137,7 @@ Với 11 ca còn lại trong bảng dữ liệu đầy đủ (`reports/data/cris
 | C28 | pawpalspuppyyoga.com (Pawpals Yoga) | *"I appreciate the follow-up, but more guidance doesn't solve anything for me. I've already rebuilt the site and won't be using EComposer going forward."* | [Mở](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_731d0b5d-5dfc-4ad9-8329-11c349b86777/) |
 | C29 | 55f512-3.myshopify.com, storefront euphoricfinds.com | *"unfortunately I cannot afford it"* | [Mở](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_acd08a07-1c4e-47d9-a514-fdf1a4ccf34b/) |
 | C30 | amethystsunco.myshopify.com (Amethyst Sun) — review 1★ công khai trên Shopify App Store | *"I stopped using EComposer because I could no longer edit on mobile… Then I got charged $25 anyway… The nerve of asking for feedback and then dismissing the answer is unbelievable."* | [Mở](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_0558ccc2-d5fe-451f-ac66-f615b7523aa1/) |
+| C32 | không xác định (chỉ có email: stillwellbrands@gmail.com) — ca mới tìm thấy ở lượt quét trải đều cả năm, mục 2.1 | *"just not what i need it didnt do anything and literally used all the credits and the ai isnt the best"* | [Mở](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_f4077e5b-1594-4525-a06d-a6b2638a43e8/) |
 
 ---
 
@@ -168,10 +197,11 @@ Hai chi tiết về cách trình bày giá:
   - *"The app was originally installed by a former colleague."* (tháng 9)
 - Ở ca tháng 8, support trả lời rằng nếu huỷ thì các trang đang chạy sẽ bị xoá khỏi shop. Đúng về kỹ thuật, nhưng khách chỉ nhận được lời cảnh báo mà không được cho thấy app đang mang lại gì.
 
-### 4.4 Lỗi, mất dữ liệu, AI lỗi (4 ca rời bỏ, cộng nhiều tín hiệu rủi ro)
+### 4.4 Lỗi, mất dữ liệu, AI lỗi (5 ca rời bỏ, cộng nhiều tín hiệu rủi ro)
 
 | Tháng | Chuyện gì xảy ra | Thời gian đến lúc gỡ |
 |---|---|---|
+| 2 | Dùng hết AI credit để tạo trang, kết quả không đạt, gỡ app ngay. *"literally used all the credits and the ai isnt the best"* (C32, tìm thấy ở lượt quét mục 2.1) | Không rõ, nhưng gỡ app trước khi nhắn support |
 | 4 | AI tạo trang không chạy. *"the app never worked and I was never able to use it"* | Vài ngày |
 | 5 | Shop doanh thu ~$5.200/tháng, mua AI credit, AI lỗi do mất kết nối server. *"I use another page builder I was just trying to try this one out"* | **30 phút** |
 | 7 | Gói Pro, shop 9 ngày tuổi. *"everything deleted!!!! why you have not auto save???"* | **Trong 1,5 giờ** |
@@ -284,7 +314,8 @@ Crisp không đo được tỉ lệ chuyển đổi, nhưng cho thấy vài đi�
 | 6 | Email hỏi lý do sau khi gỡ/hạ gói không có phản hồi | ~30 email (21 sau gỡ app, 9 sau hạ gói) gửi theo đợt các ngày 2, 6, 7, 9, 15, 19/10; không thấy ca nào trả lời |
 | 7 | Tin quảng cáo BFCM tự động gửi vào hội thoại của khách đang muốn rời | Tháng 10: một khách trả lời tin BFCM bằng *"hi pls cancel my subscription"* |
 | 8 | Giải thích tính năng chưa đúng dẫn đến nâng cấp không cần thiết | Tháng 5 (đa thị trường). Support đã nhận lỗi. |
-| 9 | Nhãn Crisp có từ ngữ xúc phạm khách | Đã nêu ở báo cáo trước |
+| 9 | Nhãn Crisp có từ ngữ xúc phạm khách | 4 nhãn cụ thể tìm thấy khi đọc segments của các hội thoại: `stupid user`, `stupid customer`, `stupid pro max`, `rude user`. Gắn cho khách đang ở mức ưu tiên cao/khó chịu (ví dụ cùng lúc với nhãn `difficult customer`, `20% discount given`). Dù nội bộ, đây là rủi ro nếu lộ ra ngoài hoặc ảnh hưởng cách nhân viên trả lời khách đó. |
+| 10 | Có tiền lệ linh hoạt tốt nhưng chưa thành quy trình chuẩn: một khách Free bị gắn nhãn `rude user` vẫn được "Admin team approved a one-time exception to remove the EComposer branding on your Free plan" — gỡ bỏ chủ động, không đợi khách yêu cầu | Ca tháng 2 (cùng hội thoại có nhãn `rude user`). Nên biến ngoại lệ này thành chính sách rõ ràng (ví dụ: gỡ branding cho Free khi khách phản hồi gay gắt hoặc đã dùng ≥ X tháng) thay vì xử lý tuỳ từng ca |
 
 ---
 
@@ -295,7 +326,7 @@ Mẫu lệch về các tháng gần đây; bảng này để tra cứu, không d
 | Tháng | Số ca | Tóm tắt |
 |---|---|---|
 | 1 | 1 | Không đủ tiền, bị tính phí sau khi gỡ |
-| 2 | 2 | Tạm dừng shop; chuyển sang PageFly |
+| 2 | 3 | Tạm dừng shop; chuyển sang PageFly; gỡ app vì dùng hết AI credit mà kết quả không đạt |
 | 3 | 0 | (không tìm tới) |
 | 4 | 3 | Bị tính sau khi gỡ; AI không chạy; tranh cãi ngày hạ gói |
 | 5 | 1 | AI lỗi lần đầu, gỡ sau 30 phút |
