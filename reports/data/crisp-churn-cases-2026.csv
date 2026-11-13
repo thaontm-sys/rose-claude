@@ -1,0 +1,32 @@
+case_id,thang_su_kien,goi,tham_nien,ly_do_chinh,ghi_chu_ly_do,tranh_chap_billing,ket_qua_refund,anh_huong_review,crisp_session_id
+C01,2026-01,Tra phi (khong ro goi),Khong ro,Gia / tai chinh,"Khong du tien; bi tinh phi sau khi go app",Bi tinh chu ky moi sau khi huy/go,Hoan toan bo sau 6 ngay,Doa review xau,session_6ada9c89-522b-4f2b-9f4b-fa881a9ef8a6
+C02,2026-02,Standard,Khong ro,Khong con nhu cau / shop dong / doi nguoi,"Tam dung shop vi ton kho",Bi tinh chu ky moi sau khi huy/go,Khong hoan (khach tu hoi Shopify),,session_0183a7c6-8cfc-4e6a-ba30-d577abb6d2f5
+C03,2026-02,Khong ro,Khong ro,Doi thu / thu app khac,"Chuyen sang PageFly vi dev moi quen dung",Khong,,,session_e615aebf-19ad-4b0f-b33d-921effee607a
+C04,2026-04,Standard,Khong ro,Khong con nhu cau / shop dong / doi nguoi,"Noi da go app va khong dung nhung van bi tinh 2 thang",Bi tinh chu ky moi sau khi huy/go,Tu choi,,session_a746a8e3-d3fe-4aa0-a408-98f1051a4261
+C05,2026-04,Standard,Moi (<1 thang),Loi / mat du lieu / AI,"AI tao trang khong chay; 'app never worked'",Khac,Hoan toan bo sau 1 ngay,,session_d36aa912-d442-46f3-b4ae-e70bf9ed6b2d
+C06,2026-04,Standard,Khong ro,Khong ro ly do,"Ha goi; tranh cai ngay huy (lech mui gio)",Bi tinh chu ky moi sau khi huy/go,Hoan mot phan theo ngay,,session_5ae08fcc-6ad6-4410-b71e-2ade344d054a
+C07,2026-05,Free + mua AI credit,Moi (<1 thang),Loi / mat du lieu / AI,"AI loi ngay lan dau; dang dung page builder khac; go sau 30 phut",Khong,,,session_5bbdd508-8efa-45d0-8dbe-4d94c5390759
+C08,2026-06,Standard,26 thang,Gia / tai chinh,"Tai chinh han che; duoc hen cho roi bi tu choi",Bi tinh chu ky moi sau khi huy/go,Tu choi (sau khi hen cho 6 tuan),,session_dbc845b0-7caa-40c3-93df-88e75f047851
+C09,2026-06,Tra phi (khong ro goi),~4 thang,Khong con nhu cau / shop dong / doi nguoi,"Dong shop; go app 4 ngay sau khi chu ky moi bat dau",Bi tinh chu ky moi sau khi huy/go,Tu choi,Doa khieu nai,session_4e819881-bcea-4815-913d-1eb5002ee968
+C10,2026-06,Standard,Khong ro,Gia / tai chinh,"Ly do huy: dat; go app dung ngay chu ky moi bat dau",Bi tinh chu ky moi sau khi huy/go,Khong ro,,session_d113c087-05c4-4faf-b494-159523c13c02
+C11,2026-07,Tra phi (khong ro goi),~2 thang,Gia / tai chinh,"Khong du tien; tuong da huy nhung chua",Bi tinh chu ky moi sau khi huy/go,Tu choi (4 lan),,session_213dcb5b-9edf-4019-b8cc-03d52d426656
+C12,2026-07,Tra phi (khong ro goi),3 nam,Khong ro ly do,"Ha goi; duoc hen cho roi bi tu choi",Bi tinh chu ky moi sau khi huy/go,Tu choi (sau khi hen cho),Ha tu 5 sao xuong 3 sao,session_9628380b-e6cb-43cb-ba9a-b79a802999ef
+C13,2026-07,Pro,Moi (<1 thang),Loi / mat du lieu / AI,"Mat toan bo noi dung vi khong co autosave; go app ngay",Khong,,,session_1721264a-5856-48a4-a523-7737ab22ed5e
+C14,2026-07,Khong ro,Khong ro,Khong ro ly do,"Go app; code con sot trong theme; 3 ngay moi xong",Khong,,,session_16f9becb-0492-489b-ae7c-dc01a57a5954
+C15,2026-08,Standard,Khong ro,Khong con nhu cau / shop dong / doi nguoi,"Chu moi tiep quan; khong biet app lam gi",Khong,,,session_e89deecd-ec28-47f0-b048-578fe1ce6b61
+C16,2026-09,Pro nam,>1 nam,Khong con nhu cau / shop dong / doi nguoi,"Dong nghiep cu cai; khong dung tu 2025; goi nam tu gia han",Goi nam,Hoan mot phan theo thang,,session_11dcdd18-d0b6-471d-9cee-ef0eac538ac1
+C17,2026-09,Free,Moi (<1 thang),Khong sua duoc tren mobile,"Chi co dien thoai",Khong,,,session_80820ad1-a320-418f-8af7-60566f6fbe03
+C18,2026-10,Standard,~7 thang,Gia / tai chinh,"App phuc tap; tai chinh; nham gia 19 va 25 USD; Free 1 trang khong du de thu",Khong,,,session_907bcf5c-7aa9-48fd-ac9d-cdc86f5e9267
+C19,2026-10,Tra phi (khong ro goi),~9 thang,Tich hop app ben thu ba,"Chuyen tu GemPages sang; vuong Kaching Bundles; sau do ha goi",Khong,,,session_593a1c88-264e-46a7-98e3-de10293bb76c
+C20,2026-10,Tra phi -> Free,Khong ro,Khong ro ly do,"Ha goi roi hoi cach go app; truoc do gap loi hien thi mobile",Khong,,,session_36092420-5753-4975-bc63-78010ddbda19
+C21,2026-10,Khong ro,Khong ro,Gia / tai chinh,"Khao sat go app: Too expensive + Not using app now",Khong,,,session_50453342-aa1e-4018-95b6-d1571e413eb9
+C22,2026-10,Standard,Khong ro,Doi thu / thu app khac,"Go app va huy goi; dang thu app khac",Khong,,,session_00e0b30c-3ce5-40be-8b1b-04c486fec61a
+C23,2026-10,Pro,Khong ro,Khong ro ly do,"Go app; khong tra loi email hoi ly do",Khong,,,session_33560c7e-6bd1-45c2-b261-63cee5a55db7
+C24,2026-10,Pro -> Standard,~7 thang,Gia / tai chinh,"Ha goi kem ma giam gia; roi vi hien thi gia han cua Shopify",Khong,,,session_e636a4e4-5a8e-4535-b2be-471d73e73977
+C25,2026-10,Tra phi (khong ro goi),Moi (<1 thang),Khong ro ly do,"Huy 5 ngay sau khi tra tien",Khac,Khong ro,,session_cbf8cac1-d0a4-4b2d-9a0a-be7ee5f71b45
+C26,2026-10,Khong ro,Khong ro,Khong con nhu cau / shop dong / doi nguoi,"Dev cai app; chu shop thay roi nen go",Khong,,,session_afb65e32-5930-4c8f-87be-40a024186fac
+C27,2026-10,Pro nam,Moi (<1 thang),Mua nham goi nam,"Mua nham 468 USD; go sau vai ngay; chua dung",Goi nam,Tu choi (trong 7 phut),,session_96000b76-7287-4457-bce8-2d453f2fb144
+C28,2026-10,Goi nam,2 thang,Loi / mat du lieu / AI,"Anh tren trang live bi mat nhieu lan; da dung lai site o noi khac",Goi nam,Hoan toan bo (sau review 2 sao),2 sao,session_731d0b5d-5dfc-4ad9-8329-11c349b86777
+C29,2026-10,Goi nam,Khong ro,Gia / tai chinh,"Khong du tien; bi tu choi roi chuyen cap tren",Goi nam,Dang cho (13+ ngay),,session_acd08a07-1c4e-47d9-a514-fdf1a4ccf34b
+C30,2026-11,Standard,3 nam,Khong sua duoc tren mobile,"Khong con sua duoc tren mobile; bi tinh 25 USD",Bi tinh chu ky moi sau khi huy/go,Tu choi luc dau; dang xem lai,1 sao,session_0558ccc2-d5fe-451f-ac66-f615b7523aa1
+C31,2026-11,Tra phi (khong ro goi),Khong ro,Khong con nhu cau / shop dong / doi nguoi,"Dong shop; nhan them hoa don sau khi go",Bi tinh chu ky moi sau khi huy/go,Khong ro (bi day qua lai voi Shopify),,session_4f133729-dda3-40e9-b11d-f42c0d782e91
