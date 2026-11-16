@@ -1,6 +1,6 @@
-# Phân tích churn từ Crisp: 1/1/2026 – 13/11/2026
+# Phân tích churn từ Crisp: 1/1/2026 – 15/11/2026
 
-**Nguồn:** Crisp workspace EComposer, đọc qua kết nối MCP, cập nhật ngày 13/11/2026.
+**Nguồn:** Crisp workspace EComposer, đọc qua kết nối MCP, cập nhật ngày 16/11/2026. Từ 17/11/2026, báo cáo được tự động quét và bổ sung mỗi ngày lúc 8h sáng (giờ Việt Nam) cho ngày trước đó — xem mục 11.
 **Dữ liệu từng ca:** `reports/data/crisp-churn-cases-2026.csv` — có domain cửa hàng (khi xác định được) và link mở thẳng hội thoại trong Crisp cho cả 32 ca; bảng trích dẫn nguyên văn cho các ca đã đối chiếu kỹ ở mục 3.4. Đã bỏ tên và email cá nhân của khách trong phần văn bản báo cáo.
 
 ---
@@ -311,7 +311,7 @@ Crisp không đo được tỉ lệ chuyển đổi, nhưng cho thấy vài đi�
 | 3 | Thời gian xử lý refund dài | 6 ngày, 12 ngày, 13+ ngày chưa xong, 6 tuần |
 | 4 | Khách bị kẹt với bot | *"J'aimerais arrêter de parler à un bot"* (tháng 10); *"Give me a real person"* (tháng 9). Tháng 10, khách hỏi "gỡ app thì trang của tôi ra sao", bot trả lời về gỡ branding. |
 | 5 | AI agent hết hạn mức | Ghi chú "Hugo AI usage limit reached" ngày 21/5 ở 2 hội thoại, khách bị chuyển sang người giữa chừng |
-| 6 | Email hỏi lý do sau khi gỡ/hạ gói không có phản hồi | ~30 email (21 sau gỡ app, 9 sau hạ gói) gửi theo đợt các ngày 2, 6, 7, 9, 15, 19/10; không thấy ca nào trả lời |
+| 6 | Email hỏi lý do sau khi gỡ/hạ gói không có phản hồi | ~30 email (21 sau gỡ app, 9 sau hạ gói) gửi theo đợt các ngày 2, 6, 7, 9, 15, 19/10; không thấy ca nào trả lời. **⚠️ Xem cảnh báo pháp lý ở đầu mục 9** — chưa xác nhận được việc giữ email liên hệ merchant để gửi loạt email này sau khi gỡ app có ổn với nghĩa vụ `shop/redact` (48 giờ) và luật chống spam/GDPR marketing hay không. |
 | 7 | Tin quảng cáo BFCM tự động gửi vào hội thoại của khách đang muốn rời | Tháng 10: một khách trả lời tin BFCM bằng *"hi pls cancel my subscription"* |
 | 8 | Giải thích tính năng chưa đúng dẫn đến nâng cấp không cần thiết | Tháng 5 (đa thị trường). Support đã nhận lỗi. |
 | 9 | Nhãn Crisp có từ ngữ xúc phạm khách | 4 nhãn cụ thể tìm thấy khi đọc segments của các hội thoại: `stupid user`, `stupid customer`, `stupid pro max`, `rude user`. Gắn cho khách đang ở mức ưu tiên cao/khó chịu (ví dụ cùng lúc với nhãn `difficult customer`, `20% discount given`). Dù nội bộ, đây là rủi ro nếu lộ ra ngoài hoặc ảnh hưởng cách nhân viên trả lời khách đó. |
@@ -341,38 +341,42 @@ Mẫu lệch về các tháng gần đây; bảng này để tra cứu, không d
 
 ## 9. Khuyến nghị
 
+> **Đã đối chiếu với quy chuẩn chính thức của Shopify trước khi đưa vào danh sách dưới đây** — theo đúng yêu cầu: nếu Shopify cấm, không được đề xuất, bất kể giải quyết được bao nhiêu ca. Cột cuối mỗi bảng ghi rõ căn cứ. Nguồn chính: trang "App Store requirements" và tài liệu Billing API trên shopify.dev, cùng tài liệu GDPR webhook. Hai việc **không tìm được văn bản Shopify khẳng định rõ ràng** (đánh dấu ⚠️ ở các mục liên quan) nên cần người có quyền truy cập Partner Dashboard xác nhận lại trước khi triển khai, không chỉ dựa vào báo cáo này.
+>
+> **⚠️ Phát hiện cần xác nhận pháp lý riêng, chưa có trong các khuyến nghị bên dưới:** chiến dịch email tự động "rất tiếc vì bạn đã gỡ/hạ gói" (mục 7, hạng mục 6 — ~30 email gửi theo đợt tháng 10) dùng email liên hệ của merchant *sau khi* họ đã gỡ app. Shopify yêu cầu webhook `shop/redact` xử lý trong **48 giờ** sau uninstall, nhưng tài liệu Shopify tôi tìm được chỉ nói về nghĩa vụ xoá dữ liệu, không nói rõ việc giữ lại email liên hệ merchant để gửi 1 email xin phản hồi có tính là "mục đích hợp lý" được miễn, hay cần xin phép riêng theo luật chống spam/GDPR marketing (đây là luật, không phải quy chuẩn app của Shopify, nên nằm ngoài phạm vi tôi kiểm tra được). **Khuyến nghị: dừng/tạm hoãn gửi hàng loạt kiểu này cho đến khi legal/compliance team xác nhận**, thay vì coi đây là an toàn chỉ vì tỉ lệ phản hồi bằng 0 không ai phàn nàn.
+
 ### Làm ngay (2–4 tuần)
 
-| # | Việc | Giải quyết | Đo bằng |
-|---|---|---|---|
-| 1 | **Chính sách refund mới:** tự động hoàn theo ngày chưa dùng khi khách huỷ giữa chu kỳ; hoàn đủ nếu huỷ trong 3 ngày đầu chu kỳ; hoàn đủ gói năm trong 7 ngày đầu | 11 ca chu kỳ + 4 ca gói năm | Số hội thoại refund; số review nhắc "charged"/"refund" |
-| 2 | **Nhờ dev kiểm tra tham số `prorate` của `appSubscriptionCancel`** (Shopify Admin API). Nếu dùng được, khi khách bấm hạ gói trong app Shopify sẽ tự cấp credit phần chưa dùng, không cần support can thiệp. | Phần lớn 11 ca chu kỳ | Số ticket billing |
-| 3 | **Hiển thị trong app:** ngày gia hạn tiếp theo, số tiền, và câu "nếu huỷ hôm nay bạn dùng được đến ngày X" | Hiểu nhầm về chu kỳ | Số câu hỏi "why was I charged" |
-| 4 | **Email nhắc trước khi gia hạn:** gói năm 7 và 3 ngày trước; gói tháng 3 ngày trước nếu shop không mở app 30 ngày qua | Ca "không dùng nhưng vẫn bị tính" | Tỉ lệ refund gói năm |
-| 5 | **Quy tắc trả lời refund:** trả lời dứt khoát trong 1 ngày làm việc; không hẹn "chờ rồi tính"; tự tra hoá đơn; không hỏi lý do quá 1 lần | Ca hẹn rồi từ chối | Thời gian xử lý trung vị |
-| 6 | **Ngoại lệ cho khách ≥ 12 tháng:** Lead CS được quyền hoàn 1 chu kỳ không cần duyệt | 2 review thấp sao từ khách 3 năm | Review ≤ 3★ từ khách lâu năm |
-| 7 | **Tắt tin quảng cáo tự động** cho hội thoại có yêu cầu refund/huỷ trong 30 ngày | Mục 7.7 | — |
+| # | Việc | Giải quyết | Đo bằng | Đối chiếu Shopify |
+|---|---|---|---|---|
+| 1 | **Chính sách refund mới:** tự động hoàn theo ngày chưa dùng khi khách huỷ giữa chu kỳ; hoàn đủ nếu huỷ trong 3 ngày đầu chu kỳ; hoàn đủ gói năm trong 7 ngày đầu | 11 ca chu kỳ + 4 ca gói năm | Số hội thoại refund; số review nhắc "charged"/"refund" | Phải cấp qua `appCreditCreate` (Partner API) — có trần là **tổng tiền đã thu trong 30 ngày gần nhất**, người cấp cần quyền Partner API "View financials". Không phải refund tiền thật ra ngoài Shopify. |
+| 2 | **Nhờ dev xác nhận tham số `prorate` của `appSubscriptionCancel`.** Admin GraphQL: tham số này là tuỳ chọn. Bản Partner API (từ 07/2026) bắt buộc truyền và có ngữ nghĩa riêng; dùng `prorate` sẽ bị trừ vào revenue-share của EComposer. Dev cần chốt đúng API, đọc kỹ chi phí, rồi mới bật — không phải "cứ bật thử". | Phần lớn 11 ca chu kỳ | Số ticket billing | ⚠️ Tự kiểm tra kỹ hai phiên bản API trước khi bật; Shopify không cấm, nhưng có phát sinh chi phí revenue-share cho EComposer. |
+| 3 | **Hiển thị trong app:** ngày gia hạn tiếp theo, số tiền, và câu "nếu huỷ hôm nay bạn dùng được đến ngày X" | Hiểu nhầm về chu kỳ | Số câu hỏi "why was I charged" | Không trái quy định — đúng hướng minh bạch billing mà Shopify khuyến khích. |
+| 4 | **Email nhắc trước khi gia hạn:** gói năm 7 và 3 ngày trước; gói tháng 3 ngày trước nếu shop không mở app 30 ngày qua | Ca "không dùng nhưng vẫn bị tính" | Tỉ lệ refund gói năm | Không liên quan quy định billing của Shopify. |
+| 5 | **Quy tắc trả lời refund:** trả lời dứt khoát trong 1 ngày làm việc; không hẹn "chờ rồi tính"; tự tra hoá đơn; không hỏi lý do quá 1 lần | Ca hẹn rồi từ chối | Thời gian xử lý trung vị | Không liên quan — quy trình nội bộ. |
+| 6 | **Ngoại lệ cho khách ≥ 12 tháng:** Lead CS được quyền hoàn 1 chu kỳ không cần duyệt | 2 review thấp sao từ khách 3 năm | Review ≤ 3★ từ khách lâu năm | Vẫn phải đi qua `appCreditCreate` và trần 30 ngày nói ở mục 1 — "không cần duyệt" chỉ nên hiểu là bỏ bước xin duyệt nội bộ, **không phải** bỏ qua giới hạn hoặc quyền Partner API của Shopify. |
+| 7 | **Tắt tin quảng cáo tự động** cho hội thoại có yêu cầu refund/huỷ trong 30 ngày | Mục 7.7 | — | Không liên quan — quy trình nội bộ. |
 
 ### Trong quý (sản phẩm)
 
-| # | Việc | Giải quyết |
-|---|---|---|
-| 8 | **Autosave và lịch sử phiên bản** trong editor | Ca mất toàn bộ nội dung; đề nghị undo/history; ảnh bị mất |
-| 9 | **AI builder:** tự hoàn credit khi lỗi server hoặc khi khách đánh giá "không đạt"; cho lần tạo đầu tiên miễn phí; cảnh báo số credit trước khi chạy | 2 ca gỡ trong ngày đầu, 2 ca rủi ro |
-| 10 | **Tuỳ chọn tạm dừng gói** (giữ trang, $0–5/tháng, tối đa 3 tháng) thay cho huỷ | Nhóm tài chính và shop tạm dừng (10+ ca) |
-| 11 | **Màn hình khảo sát khi hạ gói hoặc huỷ ngay trong app**, kèm đề nghị phù hợp từng lý do (tạm dừng, hạ gói, giảm giá, đặt lịch hỗ trợ) | Thay cho email không ai trả lời |
-| 12 | **Nút "Gỡ sạch"** chạy được trước khi uninstall, không cần cài lại | Ca tháng 7 |
-| 13 | **Trang "App này đang làm gì cho shop bạn"**: số trang đang chạy, lượt xem, đơn hàng qua trang EComposer. Gửi email tóm tắt hằng tháng. | Nhóm chủ mới tiếp quản, và mọi khách đang cân nhắc giá |
-| 14 | **Sửa nhanh trên mobile** (chữ, ảnh, giá, bật/tắt section); kiểm tra xem 2026 có thay đổi nào làm mất khả năng sửa trên mobile | 2 ca, trong đó 1 review 1★ |
-| 15 | **Dùng thử tự bật** không cần support; hỏi lại vào ngày 5 | Mục 6.2 |
+| # | Việc | Giải quyết | Đối chiếu Shopify |
+|---|---|---|---|
+| 8 | **Autosave và lịch sử phiên bản** trong editor | Ca mất toàn bộ nội dung; đề nghị undo/history; ảnh bị mất | Không liên quan quy định Shopify. |
+| 9 | **AI builder:** tự hoàn credit khi lỗi server hoặc khi khách đánh giá "không đạt"; cho lần tạo đầu tiên miễn phí; cảnh báo số credit trước khi chạy | 2 ca gỡ trong ngày đầu, 2 ca rủi ro | Credit AI là tài nguyên nội bộ của EComposer (không phải tiền qua Shopify Billing), nên không bị áp trần của `appCreditCreate`. An toàn để tự động hoá theo ý muốn. |
+| 10 | **Tuỳ chọn tạm dừng gói** (giữ trang, $0–5/tháng, tối đa 3 tháng) thay cho huỷ | Nhóm tài chính và shop tạm dừng (10+ ca) | **Bắt buộc:** phải là một gói thu phí thật qua Billing API (`appSubscriptionCreate`), không được thu qua kênh ngoài Shopify. Shopify chỉ có 2 trạng thái subscription (active/cancelled) — "tạm dừng" ở đây là một gói giá rất thấp, không phải trạng thái "pause" riêng mà Shopify hỗ trợ. |
+| 11 | **Màn hình khảo sát khi hạ gói hoặc huỷ ngay trong app**, kèm đề nghị phù hợp từng lý do (tạm dừng, hạ gói, giảm giá, đặt lịch hỗ trợ) | Thay cho email không ai trả lời | **Bắt buộc theo Shopify App Store requirements**: *"app phải cho merchant tự nâng/hạ gói mà không cần liên hệ support hoặc cài lại app."* Màn hình khảo sát/đề nghị được phép hiện ra, nhưng **không được chặn, làm chậm, hoặc thay vào nút tự huỷ/hạ gói** — luôn phải có lối "Bỏ qua, huỷ ngay" rõ ràng và hoạt động thật. |
+| 12 | **Nút "Gỡ sạch"** chạy được trước khi uninstall, không cần cài lại | Ca tháng 7 | Không trái quy định — đúng hướng "uninstall sạch" mà Shopify khuyến khích (gỡ script/code chèn vào theme). |
+| 13 | **Trang "App này đang làm gì cho shop bạn"**: số trang đang chạy, lượt xem, đơn hàng qua trang EComposer. Gửi email tóm tắt hằng tháng. | Nhóm chủ mới tiếp quản, và mọi khách đang cân nhắc giá | Không liên quan quy định Shopify. |
+| 14 | **Sửa nhanh trên mobile** (chữ, ảnh, giá, bật/tắt section); kiểm tra xem 2026 có thay đổi nào làm mất khả năng sửa trên mobile | 2 ca, trong đó 1 review 1★ | Không liên quan quy định Shopify. |
+| 15 | **Dùng thử tự bật** không cần support; hỏi lại vào ngày 5 | Mục 6.2 | Không bắt buộc, nhưng cùng hướng với yêu cầu tự phục vụ ở mục 11 — nên làm qua Billing API tự động thay vì support bật tay thủ công. |
 
 ### Cơ hội tăng trưởng
 
-| # | Việc | Căn cứ |
-|---|---|---|
-| 16 | **Công bố tài liệu định dạng `.ecom` và hướng dẫn dựng trang bằng AI bên ngoài** (Claude, ChatGPT) | Khách tháng 1 bỏ GemPages vì điều này và sẵn sàng giới thiệu cho 1.000 merchant |
-| 17 | **Đưa dịch vụ chuyển trang từ PageFly/GemPages lên trang chủ và trang giá** | Có khách chủ động hỏi; hiện chỉ biết khi nhắn support |
-| 18 | **Danh sách ưu tiên tương thích app** (Kaching Bundles trước), có người chịu trách nhiệm phía EComposer thay vì chuyển khách sang app kia | Ca tháng 1 |
+| # | Việc | Căn cứ | Đối chiếu Shopify |
+|---|---|---|---|
+| 16 | **Công bố tài liệu định dạng `.ecom` và hướng dẫn dựng trang bằng AI bên ngoài** (Claude, ChatGPT) | Khách tháng 1 bỏ GemPages vì điều này và sẵn sàng giới thiệu cho 1.000 merchant | Không liên quan billing/uninstall — không thấy quy định cấm. |
+| 17 | **Đưa dịch vụ chuyển trang từ PageFly/GemPages lên trang chủ và trang giá** | Có khách chủ động hỏi; hiện chỉ biết khi nhắn support | ⚠️ Không thấy quy định cấm nêu tên đối thủ trên trang của mình, nhưng: không dùng review/dữ liệu giả về đối thủ, không có phát ngôn miệt thị, và **chưa xác nhận được** có được dùng tên đối thủ trong trường "search terms" của listing App Store hay không — hỏi lại đội Partner Shopify trước khi thêm vào đó. |
+| 18 | **Danh sách ưu tiên tương thích app** (Kaching Bundles trước), có người chịu trách nhiệm phía EComposer thay vì chuyển khách sang app kia | Ca tháng 1 | Không liên quan quy định Shopify. |
 
 ---
 
@@ -384,7 +388,25 @@ Mẫu lệch về các tháng gần đây; bảng này để tra cứu, không d
 | 31 ca này chiếm bao nhiêu phần trăm tổng số gỡ/huỷ | Partner API |
 | Shop lên paid quá sớm có huỷ nhiều hơn không | Partner API (mục "tốc độ lên paid" trong báo cáo tuần) |
 | Khách Free gỡ app vì sao | Khảo sát gỡ app của Shopify (Partner API) + màn hình khảo sát trong app |
-| Toàn bộ review ≤ 3★ trong năm | Trang review Shopify (cần mở quyền truy cập `apps.shopify.com`) |
+| Toàn bộ review ≤ 3★ trong năm | Trang review Shopify — **đã xin mở quyền truy cập `apps.shopify.com` cho môi trường này ngày 16/11 nhưng chưa có hiệu lực** (vẫn bị chặn ở cả 2 cách thử); cần bạn duyệt lại yêu cầu mở host này trong phần cài đặt môi trường (Network access), xem mục 11.2 |
 | Số ca theo từng nhãn Crisp | Gắn nhãn chuẩn (ví dụ `churn:price`, `churn:billing-cycle`, `churn:bug`, `churn:mobile`, `churn:competitor`) rồi xuất từ Crisp |
 
-**Đề xuất bước tiếp theo:** (1) cấp token Partner API để ghép 31 ca này với dữ liệu cài/gỡ thật; (2) thống nhất bộ nhãn `churn:*` trong Crisp để từ tháng sau đếm được đầy đủ thay vì lấy mẫu; (3) chạy lại phân tích này hằng tháng.
+**Đề xuất bước tiếp theo:** (1) cấp token Partner API để ghép 32 ca này với dữ liệu cài/gỡ thật; (2) thống nhất bộ nhãn `churn:*` trong Crisp để từ tháng sau đếm được đầy đủ thay vì lấy mẫu; (3) chạy lại phân tích này hằng tháng; (4) duyệt quyền truy cập `apps.shopify.com` để đọc toàn bộ review (mục 11.2).
+
+---
+
+## 11. Cập nhật 14–15/11/2026 và lịch chạy tự động
+
+### 11.1 Hai ngày 14–15/11/2026
+
+Quét các hội thoại Crisp trong hai ngày này (qua `list_conversations_at_page`, không phải tìm từ khoá): **không tìm thấy ca rời bỏ mới** (không có gỡ app/huỷ/hạ gói/refund). Hai điểm ghi nhận:
+
+1. **Một dấu hiệu chất lượng support, chưa phải churn:** khách báo đang dùng desktop nhưng vẫn bị pop-up chặn vào editor với lý do "chỉ dùng tốt trên desktop" (lẽ ra chỉ hiện với màn hình nhỏ/mobile). Operator trả lời theo mẫu có sẵn (hướng dẫn chuyển sang desktop) mà không xác nhận lại việc khách đã nói rõ họ đang ở desktop — có thể là lỗi nhận diện kích thước màn hình, nên dev kiểm tra. [Mở hội thoại](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_043fd708-a95c-477b-9d89-63c8cf1d18e9/)
+2. **Chiến dịch BFCM đang chạy 14–22/11/2026**: giảm 20% gói tháng/năm + tặng 200 AI credit 30 ngày, gửi tự động qua Crisp vào mọi hội thoại đang mở — kể cả hội thoại khách đang hỏi lỗi kỹ thuật (đúng vấn đề đã nêu ở mục 7, hạng mục 7). Nên loại các hội thoại có từ khoá lỗi/bug ra khỏi luồng gửi tin BFCM tự động.
+3. 3 review mới trên Shopify App Store báo qua Crisp ngày 13–14/11, cả 3 đều tích cực (5★, khen support nhanh) — không có review thấp sao trong 2 ngày này.
+
+### 11.2 Lịch báo cáo tự động từ 17/11/2026
+
+Đã đặt lịch (`trig_01TccfWncDewTFSPo36QXQLT`): mỗi ngày **8h sáng giờ Việt Nam**, phiên này tự động quét lại Crisp cho ngày hôm trước, thêm một mục log ngắn vào báo cáo này (không viết lại toàn bộ), thêm ca mới vào CSV nếu có, và mọi khuyến nghị mới đều phải qua đối chiếu quy chuẩn Shopify như mục 9 trước khi ghi vào. Lần chạy đầu: sáng 17/11/2026, cho dữ liệu ngày 16/11.
+
+**Việc còn vướng, cần bạn xác nhận lại:** tôi đã gửi yêu cầu mở `apps.shopify.com` trong mạng của môi trường này hai lần (qua `update_environment`) để đọc toàn bộ review Shopify App Store, nhưng kiểm tra lại vẫn bị chặn ở cả Bash và WebFetch — nhiều khả năng yêu cầu đang chờ bạn duyệt trên thẻ xác nhận (hoặc đã bị từ chối) chứ chưa áp dụng. Bạn kiểm tra lại trong phần cài đặt môi trường (Network access) của môi trường "rose-claude", thêm `apps.shopify.com` vào danh sách host được phép, rồi báo tôi biết để tôi đọc tiếp toàn bộ review.
