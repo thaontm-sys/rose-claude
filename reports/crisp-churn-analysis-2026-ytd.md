@@ -409,4 +409,11 @@ Quét các hội thoại Crisp trong hai ngày này (qua `list_conversations_at_
 
 Đã đặt lịch (`trig_01TccfWncDewTFSPo36QXQLT`): mỗi ngày **8h sáng giờ Việt Nam**, phiên này tự động quét lại Crisp cho ngày hôm trước, thêm một mục log ngắn vào báo cáo này (không viết lại toàn bộ), thêm ca mới vào CSV nếu có, và mọi khuyến nghị mới đều phải qua đối chiếu quy chuẩn Shopify như mục 9 trước khi ghi vào. Lần chạy đầu: sáng 17/11/2026, cho dữ liệu ngày 16/11.
 
+### 11.3 Ngày 16/11/2026 (log tự động lần đầu)
+
+**Không có ca rời bỏ mới** sau khi đọc toàn văn 3 hội thoại nghi vấn trong ngày. Một điểm đáng ghi nhận, củng cố thêm phát hiện cũ ở mục 7 (hạng mục 7):
+
+- Một khách trả lời đúng 1 chữ **"cancel"** ngay sau khi nhận tin quảng cáo BFCM tự động; operator hỏi lại để làm rõ ý khách nhưng không có phản hồi thêm, rồi tự đóng hội thoại ("resolved") dù chưa rõ khách muốn huỷ gì. [Mở hội thoại](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_cfed46b4-c3b4-4537-895a-8663a0764017/) — không đủ căn cứ để thành 1 ca chính thức (không có domain, không rõ khách huỷ cái gì), nhưng là lần thứ 2 ghi nhận kiểu phản ứng này với đúng tin nhắn BFCM tự động, nên khuyến nghị ở mục 7.7 (loại hội thoại có tín hiệu tiêu cực khỏi luồng gửi tin quảng cáo tự động) càng có thêm căn cứ.
+- Không có review Shopify App Store mới nào được Crisp báo trong ngày 16/11.
+
 **Việc còn vướng, cần bạn xác nhận lại:** tôi đã gửi yêu cầu mở `apps.shopify.com` trong mạng của môi trường này hai lần (qua `update_environment`) để đọc toàn bộ review Shopify App Store, nhưng kiểm tra lại vẫn bị chặn ở cả Bash và WebFetch — nhiều khả năng yêu cầu đang chờ bạn duyệt trên thẻ xác nhận (hoặc đã bị từ chối) chứ chưa áp dụng. Bạn kiểm tra lại trong phần cài đặt môi trường (Network access) của môi trường "rose-claude", thêm `apps.shopify.com` vào danh sách host được phép, rồi báo tôi biết để tôi đọc tiếp toàn bộ review.
