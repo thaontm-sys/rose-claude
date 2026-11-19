@@ -423,4 +423,12 @@ Quét các hội thoại Crisp trong hai ngày này (qua `list_conversations_at_
 - **Ca C29 (55f512-3.myshopify.com / euphoricfinds.com) vẫn chưa được xử lý** — đã hơn **17 ngày** chờ refund kể từ 31/10, hôm nay chỉ nhận thêm tin "đã escalate cho billing team, vẫn đang chờ cập nhật". Đã cập nhật lại CSV. Đây là ca cụ thể nhất để minh chứng cho khuyến nghị #5 (trả lời refund dứt khoát trong 1 ngày) ở mục 9 — 17 ngày là quá lâu so với mức "6–13 ngày" đã ghi nhận trước đó ở mục 7.
 - 1 review 5★ mới trên Shopify App Store (Montsand, 17/11): *"Great page builder with plenty of templates. Very user-friendly and saves me a lot of time."* — tích cực, không có review thấp sao trong ngày.
 
+### 11.5 Ngày 18/11/2026
+
+**Không có ca rời bỏ mới**, nhưng có 1 phát hiện vận hành quan trọng, củng cố thêm cảnh báo đã nêu ở đầu mục 9.
+
+- **Chiến dịch email "check-in" tự động lại chạy theo lô lần thứ 2 trong năm** (lần đầu ghi nhận 6/10, lần này 18/11 lúc 12:00–12:40, cách nhau ~6 tuần): 6 hội thoại gửi tự động tới 6 khách khác nhau trong 40 phút — 2 khách vừa **gỡ app** (lý do khách tự chọn trong khảo sát gỡ app của Shopify: *"Testing multiple apps"*, *"Not using app now"*) và 4 khách vừa **hạ gói**. **Cả 6 đều không có phản hồi nào từ khách, tự đóng hội thoại trong vài phút** — giống tuyệt đối mẫu hình đã thấy ở lô tháng 10. Việc lặp lại này xác nhận đây là một job định kỳ, không phải sự cố một lần, nên **cảnh báo pháp lý ở đầu mục 9 (về `shop/redact` và luật chống spam/GDPR marketing) càng cần được xác nhận sớm**, vì chiến dịch vẫn đang tiếp tục chạy đều đặn trong khi chưa có câu trả lời.
+- Điểm có ích đi kèm: khảo sát gỡ app của Shopify **có thật và có dữ liệu** ("Testing multiple apps", "Not using app now") — đáng để lấy đầy đủ qua Partner API sau này thay vì chỉ thấy lại qua email check-in.
+- Không có review Shopify App Store mới trong ngày.
+
 **Việc còn vướng, cần bạn xác nhận lại:** tôi đã gửi yêu cầu mở `apps.shopify.com` trong mạng của môi trường này hai lần (qua `update_environment`) để đọc toàn bộ review Shopify App Store, nhưng kiểm tra lại vẫn bị chặn ở cả Bash và WebFetch — nhiều khả năng yêu cầu đang chờ bạn duyệt trên thẻ xác nhận (hoặc đã bị từ chối) chứ chưa áp dụng. Bạn kiểm tra lại trong phần cài đặt môi trường (Network access) của môi trường "rose-claude", thêm `apps.shopify.com` vào danh sách host được phép, rồi báo tôi biết để tôi đọc tiếp toàn bộ review.
