@@ -432,3 +432,7 @@ Quét các hội thoại Crisp trong hai ngày này (qua `list_conversations_at_
 - Không có review Shopify App Store mới trong ngày.
 
 **Việc còn vướng, cần bạn xác nhận lại:** tôi đã gửi yêu cầu mở `apps.shopify.com` trong mạng của môi trường này hai lần (qua `update_environment`) để đọc toàn bộ review Shopify App Store, nhưng kiểm tra lại vẫn bị chặn ở cả Bash và WebFetch — nhiều khả năng yêu cầu đang chờ bạn duyệt trên thẻ xác nhận (hoặc đã bị từ chối) chứ chưa áp dụng. Bạn kiểm tra lại trong phần cài đặt môi trường (Network access) của môi trường "rose-claude", thêm `apps.shopify.com` vào danh sách host được phép, rồi báo tôi biết để tôi đọc tiếp toàn bộ review.
+
+### 11.6 Ngày 19/11/2026
+
+**Không có ca rời bỏ mới.** Quét không thấy hội thoại nào có tín hiệu gỡ app/huỷ/hạ gói/refund mới trong ngày. 1 review 5★ cập nhật trên Shopify App Store (My Golden Wish): *"Awesome application. Support is extremely helpful and provide a lot of guidance."* Không có review thấp sao.
