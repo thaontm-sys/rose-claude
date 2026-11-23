@@ -436,3 +436,30 @@ Quét các hội thoại Crisp trong hai ngày này (qua `list_conversations_at_
 ### 11.6 Ngày 19/11/2026
 
 **Không có ca rời bỏ mới.** Quét không thấy hội thoại nào có tín hiệu gỡ app/huỷ/hạ gói/refund mới trong ngày. 1 review 5★ cập nhật trên Shopify App Store (My Golden Wish): *"Awesome application. Support is extremely helpful and provide a lot of guidance."* Không có review thấp sao.
+
+### 11.7 Ngày 20/11/2026 — sửa lại nhận định về chu kỳ gửi email tự động
+
+**Không có ca rời bỏ mới**, nhưng có 2 phát hiện quan trọng:
+
+1. **Đính chính mục 11.5**: tôi từng nói lô email "check-in" tự động lặp lại cách nhau "~6 tuần" (6/10 → 18/11). Hôm nay (20/11) lại thấy một lô mới — chỉ **2 ngày sau lô 18/11** — với ít nhất 6 hội thoại tự động gửi trong khoảng 06:27–09:48 UTC. Khoảng cách không đều (43 ngày rồi 2 ngày) cho thấy đây **không phải job chạy theo lịch cố định**, nhiều khả năng là job chạy gần như mỗi ngày nhưng tôi chỉ tình cờ bắt được một số ngày khi quét đúng khung giờ. Xin lỗi vì nhận định sai ở mục 11.5 — sửa lại ở đây cho đúng, không xoá bản cũ.
+2. **Một lý do gỡ app cụ thể hơn các lô trước**: thay vì chỉ "Testing multiple apps"/"Not using app now", lô hôm nay có một khách ghi lý do **"Not satisfied with app features"** — đáng chú ý hơn vì chỉ ra vấn đề về tính năng, không phải chỉ ngừng dùng. Khách này cũng không trả lời email check-in (giống mọi lần trước).
+3. **Phát hiện thêm 1 loại email tự động thứ 3**: ngoài "check-in sau khi gỡ app" và "check-in sau khi hạ gói", có một loại **"check-in sau khi cài lại app"** (khách gỡ rồi tự cài lại) — email này hỏi cụ thể về lý do gỡ trước đó liên quan đến AI. Đây là tín hiệu giữ chân khách tích cực (khách tự quay lại), đáng ghi nhận là điểm tốt, không phải vấn đề.
+4. 3 review mới trên Shopify App Store (My Store, The Camera Company) đều 5★, tích cực. Không có review thấp sao.
+
+### 11.8 Ngày 21/11/2026
+
+**Không có ca rời bỏ mới.** 1 review 5★ mới (AZM Pharmaceuticals): *"EComposer has made designing pages on Shopify incredibly smooth and flexible."* Một hội thoại "check-in sau khi cài lại app" khác được ghi nhận (cùng loại mới phát hiện ở mục 11.7), không có phản hồi từ khách.
+
+### 11.9 Ngày 22/11/2026 — Ca mới: C33
+
+**1 ca rời bỏ mới, đã xác nhận: C33** (kes-jewelry.com / bzikvc-ub.myshopify.com). Đây là ca billing-dispute rõ và chi tiết nhất tìm được từ khi chạy log hằng ngày:
+
+- Khách là **agency quản lý shop cho client**, shop đã đóng/ngừng hoạt động từ **tháng 8/2025** (hơn 1 năm) nhưng Shopify vẫn tiếp tục tính phí EComposer trong suốt thời gian đó.
+- Khách nhận ra và bị tính **3 hoá đơn riêng** (invoice #411781537 $19.00, #627611739 €17.58, #627611714 $46.49) đều có khoản EComposer Builder.
+- Support ban đầu **từ chối thẳng theo chính sách**: *"as per the policy, you are not eligible for a refund."*
+- Khách phản ứng: *"i don't want to understand you im also agency client didn't pay i can't pay from my pocket"*, doạ mở ticket Shopify + đăng review xấu.
+- Được chuyển cho "senior teammate", tính đến cuối ngày (21:07) vẫn ghi "Pending for dev..." kèm link ClickUp nội bộ — **chưa có kết quả cuối cùng tại thời điểm ghi nhận**.
+- Đây là minh chứng cụ thể nhất cho lỗ hổng sản phẩm chưa có trong danh sách khuyến nghị ở mục 9: **không có cơ chế tự phát hiện/tạm ngưng tính phí cho shop ngừng hoạt động kéo dài** (ví dụ shop đóng > 90 ngày). Đề xuất bổ sung: cảnh báo hoặc tự tạm dừng gói khi phát hiện shop không hoạt động quá lâu, trước khi tính phí tiếp — cần đối chiếu quy chuẩn Shopify (Billing API) trước khi triển khai theo đúng quy tắc ở mục 9, nhưng đây là cảnh báo nghiệp vụ nên ghi lại ngay.
+- [Mở hội thoại](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_b30aa7e0-fab9-407f-a49a-6690c8869eab/) — đã thêm vào CSV là C33.
+
+*Lưu ý về số đếm:* các mục 1–10 vẫn giữ số liệu gốc "32 ca" (31 ca từ lượt phân tích đầu + C32 từ lượt quét trải đều cả năm) — đây là bức tranh YTD tại thời điểm viết. C33 trở đi là ca phát hiện qua log giám sát hằng ngày (mục 11), được thêm vào CSV ngay khi xác nhận nhưng chưa gộp lại vào bảng tổng ở mục 1–10 mỗi ngày; sẽ gộp một lần khi làm lại phân tích tổng thể định kỳ (xem đề xuất ở mục 10).
