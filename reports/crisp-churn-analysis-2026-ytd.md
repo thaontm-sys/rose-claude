@@ -388,10 +388,10 @@ Mẫu lệch về các tháng gần đây; bảng này để tra cứu, không d
 | 31 ca này chiếm bao nhiêu phần trăm tổng số gỡ/huỷ | Partner API |
 | Shop lên paid quá sớm có huỷ nhiều hơn không | Partner API (mục "tốc độ lên paid" trong báo cáo tuần) |
 | Khách Free gỡ app vì sao | Khảo sát gỡ app của Shopify (Partner API) + màn hình khảo sát trong app |
-| Toàn bộ review ≤ 3★ trong năm | Trang review Shopify — **đã xin mở quyền truy cập `apps.shopify.com` cho môi trường này ngày 16/11 nhưng chưa có hiệu lực** (vẫn bị chặn ở cả 2 cách thử); cần bạn duyệt lại yêu cầu mở host này trong phần cài đặt môi trường (Network access), xem mục 11.2 |
+| Toàn bộ review ≤ 3★ trong năm | **Đã xong** — quyền truy cập `apps.shopify.com` được mở ngày 24/11; đọc được toàn bộ 356 review từ 1/1/2026, xem mục 12 |
 | Số ca theo từng nhãn Crisp | Gắn nhãn chuẩn (ví dụ `churn:price`, `churn:billing-cycle`, `churn:bug`, `churn:mobile`, `churn:competitor`) rồi xuất từ Crisp |
 
-**Đề xuất bước tiếp theo:** (1) cấp token Partner API để ghép 32 ca này với dữ liệu cài/gỡ thật; (2) thống nhất bộ nhãn `churn:*` trong Crisp để từ tháng sau đếm được đầy đủ thay vì lấy mẫu; (3) chạy lại phân tích này hằng tháng; (4) duyệt quyền truy cập `apps.shopify.com` để đọc toàn bộ review (mục 11.2).
+**Đề xuất bước tiếp theo:** (1) cấp token Partner API để ghép 32+ ca này với dữ liệu cài/gỡ thật; (2) thống nhất bộ nhãn `churn:*` trong Crisp để từ tháng sau đếm được đầy đủ thay vì lấy mẫu; (3) chạy lại phân tích này hằng tháng. (Việc đọc toàn bộ review Shopify đã xong — xem mục 12.)
 
 ---
 
@@ -431,7 +431,7 @@ Quét các hội thoại Crisp trong hai ngày này (qua `list_conversations_at_
 - Điểm có ích đi kèm: khảo sát gỡ app của Shopify **có thật và có dữ liệu** ("Testing multiple apps", "Not using app now") — đáng để lấy đầy đủ qua Partner API sau này thay vì chỉ thấy lại qua email check-in.
 - Không có review Shopify App Store mới trong ngày.
 
-**Việc còn vướng, cần bạn xác nhận lại:** tôi đã gửi yêu cầu mở `apps.shopify.com` trong mạng của môi trường này hai lần (qua `update_environment`) để đọc toàn bộ review Shopify App Store, nhưng kiểm tra lại vẫn bị chặn ở cả Bash và WebFetch — nhiều khả năng yêu cầu đang chờ bạn duyệt trên thẻ xác nhận (hoặc đã bị từ chối) chứ chưa áp dụng. Bạn kiểm tra lại trong phần cài đặt môi trường (Network access) của môi trường "rose-claude", thêm `apps.shopify.com` vào danh sách host được phép, rồi báo tôi biết để tôi đọc tiếp toàn bộ review.
+**Cập nhật 24/11:** bạn đã mở quyền truy cập mạng cho môi trường này (chuyển sang "unrestricted") — đã đọc được toàn bộ review Shopify App Store, xem mục 12.
 
 ### 11.6 Ngày 19/11/2026
 
@@ -470,3 +470,51 @@ Quét các hội thoại Crisp trong hai ngày này (qua `list_conversations_at_
 
 1. **C33 có tiến triển**: sáng 23/11, support đổi từ "từ chối hoàn toàn" sang đề xuất **hoàn bằng credit** (không phải tiền mặt) vì "chưa nhận được invoice xác nhận từ Shopify" — đang chờ khách đồng ý. Đã cập nhật CSV.
 2. **Lô email "check-in" tự động xuất hiện lần thứ 4** (sau 6/10, 18/11, 20/11) — đúng như nghi vấn ở mục 11.7, có vẻ gần như chạy hằng ngày. Lần này phát hiện một **biến thể mẫu email mới**: ngay trong email đầu tiên đã chủ động đề nghị *"a small discount to help reduce the cost"* nếu giá là lý do rời đi — sớm hơn các mẫu cũ (vốn chỉ hỏi lý do, không chủ động đề nghị giảm giá ngay). Khách vẫn không phản hồi, hội thoại tự đóng như mọi lần.
+
+---
+
+## 12. Review Shopify App Store — toàn bộ năm 2026 (356 review)
+
+Theo yêu cầu đọc toàn bộ review từ đầu năm 2026: môi trường đã được mở quyền truy cập `apps.shopify.com` (bạn đã duyệt), nên lần này đọc **trực tiếp từ trang review công khai**, không còn phụ thuộc Crisp báo hay không. Dùng script có sẵn trong repo (`churn_toolkit/sources/shopify_reviews.py`, đã kiểm tra lại selector còn khớp với giao diện hiện tại), quét ngược từ mới nhất đến khi gặp review trước 1/1/2026 thì dừng. Dữ liệu đầy đủ lưu ở `reports/data/ecomposer-shopify-reviews-2026.csv`.
+
+### 12.1 Tổng quan
+
+**356 review từ 1/1/2026 đến 17/11/2026** (ngày review mới nhất tại thời điểm quét 24/11):
+
+| Số sao | Số review | Tỉ lệ |
+|---|---|---|
+| 5★ | 343 | 96,3% |
+| 4★ | 7 | 2,0% |
+| 3★ | 1 | 0,3% |
+| 2★ | 1 | 0,3% |
+| 1★ | 4 | 1,1% |
+
+Tổng ≤3★: **6 review** (không phải "3 review" như ước lượng cũ ở mục 2 — con số đó chỉ bắt được qua thông báo tình cờ trong Crisp, không đầy đủ). Tỉ lệ hài lòng công khai rất cao (96,3% là 5★), nhưng đây là **review Shopify yêu cầu khách tự đăng, không phải khảo sát ngẫu nhiên** — khách rời bỏ âm thầm (gỡ app không để lại review) không nằm trong con số này, nên không dùng tỉ lệ này để kết luận "hài lòng 96%".
+
+### 12.2 Toàn bộ 6 review ≤3★ trong năm
+
+| Ngày | Sao | Cửa hàng | Thời gian dùng | Nội dung | Đối chiếu Crisp |
+|---|---|---|---|---|---|
+| 9/2 | 1★ | Des Königs Schachbretter (Đức/Ba Lan) | >1 năm | *"Bad experience. They broke our product page and then disappeared. I have to fix everything by myself. Worst experience"* | **C36** — xem 12.3, cùng khách với C37 |
+| 9/2 | 2★ | Zen Nootropics (Mỹ) | 35 phút | *"Not happy with the designs, wont let you keep a simple gradient background - no copyright issue, but that's what they claim. No real handy tools for text, and support ditched me online."* | C35 — không tìm thấy hội thoại Crisp riêng của khách này |
+| 1/3 | 3★ | Swish Court Official (Latvia) | ~2 tháng | (không có nội dung) | Không tìm thấy hội thoại Crisp liên quan rõ ràng |
+| 13/4 | 1★ | Les Échiquiers du Roi (Pháp) | ~2 năm | *"Bad. A lot of bugs. Poor customer service."* | **C37** — xem 12.3; ⚠️ Crisp ghi nhận review này được **cập nhật lên 5★ ngày 27/4**, nhưng bản hiện tại trên Shopify (quét 24/11) vẫn là 1★ với đúng nội dung này — mâu thuẫn chưa giải thích được, cần tự mở trang review để xác nhận |
+| 24/5 | 1★ | माते PICKLES (Ấn Độ) | ~2 giờ | (không có nội dung) | **C34** — Crisp cho thấy khách gỡ app trong vòng ~2 giờ sau khi cài, EComposer chủ động nhắn hỏi vì phát hiện cả việc gỡ nhanh và review 1★ cùng lúc |
+| 11/11 | 1★ | Amethyst Sun (Mỹ) | ~3 năm | (đã có đầy đủ ở C30, mục 3.4) | C30 |
+
+### 12.3 Phát hiện đáng chú ý nhất: một khách, hai shop, lặp lại cùng một sự cố
+
+**Des Königs Schachbretter** (tiếng Đức) và **Les Échiquiers du Roi** (tiếng Pháp) — cả hai đều nghĩa là "Bàn cờ vua của Nhà vua" — là **hai cửa hàng của cùng một người, Aurélien Dousson**, bán cùng loại sản phẩm (bàn cờ) ở hai thị trường ngôn ngữ khác nhau. Dựng lại dòng thời gian từ lịch sử Crisp:
+
+- **Tháng 6–7/2024**: hỗ trợ tốt, review 5★ ("I highly recommend...").
+- **Tháng 8/2024**: sự cố — trang bị "hoàn toàn đảo lộn layout" ngay khi cài; được gắn nhãn `difficult customer`, `1 star`; được tặng giảm giá 10%/năm; review được cập nhật lại.
+- **Tháng 2/2026**: **sự cố giống gần như nguyên vẹn lặp lại** trên shop Đức — *"they broke our product page and then disappeared"* — review 1★ mới.
+- **Tháng 4/2026**: cùng kiểu sự cố trên shop Pháp — *"a lot of bugs, poor customer service"* — review 1★ mới.
+
+Đây là bằng chứng rõ nhất trong toàn bộ báo cáo cho thấy **một lỗi làm vỡ layout trang khi cài/dùng app đã xảy ra lặp lại với cùng một khách qua gần 2 năm, trên 2 shop khác nhau**, mỗi lần đều được "xử lý" đủ để khách không rời hẳn, nhưng gốc rễ dường như chưa được sửa triệt để. Đây là ví dụ cụ thể, có ngày tháng, cho khuyến nghị #18 (ưu tiên sửa lỗi tích hợp/kỹ thuật lặp lại) — và cho thấy nhóm "khách hiểu biết kỹ thuật, nhiều shop" (persona #4, mục 5.1) không chỉ nhạy cảm với lỗi mới mà còn **nhớ và nhắc lại lỗi cũ nếu nó lặp lại**.
+
+### 12.4 Việc cần làm tiếp
+
+1. **Lịch hằng ngày từ 25/11/2026 sẽ tự đọc trực tiếp trang review** (không chỉ dựa vào Crisp báo) — đã cập nhật lịch chạy, xem mục 11.2.
+2. Cần tự kiểm tra trực tiếp mâu thuẫn ở review Les Échiquiers du Roi (12.2) — dữ liệu Crisp và bản hiện tại trên Shopify không khớp.
+3. 356 review là số liệu **công khai qua API/trang web, không phải Partner API** — vẫn không thay thế được số liệu churn/cài-gỡ thật (xem mục 10).
