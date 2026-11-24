@@ -463,3 +463,10 @@ Quét các hội thoại Crisp trong hai ngày này (qua `list_conversations_at_
 - [Mở hội thoại](https://app.crisp.chat/website/9d122c0c-3e42-43d8-b923-e6fca52afef8/inbox/session_b30aa7e0-fab9-407f-a49a-6690c8869eab/) — đã thêm vào CSV là C33.
 
 *Lưu ý về số đếm:* các mục 1–10 vẫn giữ số liệu gốc "32 ca" (31 ca từ lượt phân tích đầu + C32 từ lượt quét trải đều cả năm) — đây là bức tranh YTD tại thời điểm viết. C33 trở đi là ca phát hiện qua log giám sát hằng ngày (mục 11), được thêm vào CSV ngay khi xác nhận nhưng chưa gộp lại vào bảng tổng ở mục 1–10 mỗi ngày; sẽ gộp một lần khi làm lại phân tích tổng thể định kỳ (xem đề xuất ở mục 10).
+
+### 11.10 Ngày 23/11/2026 — cập nhật C33 và thêm 1 lần nữa xác nhận mẫu hình email tự động
+
+**Không có ca mới**, nhưng 2 điểm cập nhật:
+
+1. **C33 có tiến triển**: sáng 23/11, support đổi từ "từ chối hoàn toàn" sang đề xuất **hoàn bằng credit** (không phải tiền mặt) vì "chưa nhận được invoice xác nhận từ Shopify" — đang chờ khách đồng ý. Đã cập nhật CSV.
+2. **Lô email "check-in" tự động xuất hiện lần thứ 4** (sau 6/10, 18/11, 20/11) — đúng như nghi vấn ở mục 11.7, có vẻ gần như chạy hằng ngày. Lần này phát hiện một **biến thể mẫu email mới**: ngay trong email đầu tiên đã chủ động đề nghị *"a small discount to help reduce the cost"* nếu giá là lý do rời đi — sớm hơn các mẫu cũ (vốn chỉ hỏi lý do, không chủ động đề nghị giảm giá ngay). Khách vẫn không phản hồi, hội thoại tự đóng như mọi lần.
