@@ -518,3 +518,14 @@ Tổng ≤3★: **6 review** (không phải "3 review" như ước lượng cũ 
 1. **Lịch hằng ngày từ 25/11/2026 sẽ tự đọc trực tiếp trang review** (không chỉ dựa vào Crisp báo) — đã cập nhật lịch chạy, xem mục 11.2.
 2. Cần tự kiểm tra trực tiếp mâu thuẫn ở review Les Échiquiers du Roi (12.2) — dữ liệu Crisp và bản hiện tại trên Shopify không khớp.
 3. 356 review là số liệu **công khai qua API/trang web, không phải Partner API** — vẫn không thay thế được số liệu churn/cài-gỡ thật (xem mục 10).
+
+---
+
+## 13. Log hằng ngày từ 25/11/2026 — đã mở rộng sang đọc review trực tiếp
+
+Từ hôm nay, lịch chạy 8h sáng đã được cập nhật: ngoài quét Crisp, mỗi ngày tự so sánh review mới nhất trên Shopify với file `reports/data/ecomposer-shopify-reviews-2026.csv` để biết review nào là mới, không cần chờ Crisp báo.
+
+### 13.1 Ngày 24/11/2026
+
+- **Không có review mới** (review mới nhất vẫn là ngày 17/11, review_id 2432106 — chưa có ai đăng thêm).
+- **1 ca mới: C38** (integrityvitamins.com) — khách yêu cầu hạ xuống Free kèm dòng chữ viết hoa *"DO NOT RENEW"*. Được hỏi lý do 2 lần, khách trả lời bằng **1 emoji bịt miệng (🤐)** rồi không nói gì thêm. Đây là ví dụ cụ thể, sống động cho vấn đề đã nêu ở mục 7 hạng mục 6 (khách không trả lời khi được hỏi lý do rời bỏ) — lần này không phải im lặng mà là **từ chối chủ động, rõ ràng**.
