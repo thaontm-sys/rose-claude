@@ -529,3 +529,8 @@ Từ hôm nay, lịch chạy 8h sáng đã được cập nhật: ngoài quét C
 
 - **Không có review mới** (review mới nhất vẫn là ngày 17/11, review_id 2432106 — chưa có ai đăng thêm).
 - **1 ca mới: C38** (integrityvitamins.com) — khách yêu cầu hạ xuống Free kèm dòng chữ viết hoa *"DO NOT RENEW"*. Được hỏi lý do 2 lần, khách trả lời bằng **1 emoji bịt miệng (🤐)** rồi không nói gì thêm. Đây là ví dụ cụ thể, sống động cho vấn đề đã nêu ở mục 7 hạng mục 6 (khách không trả lời khi được hỏi lý do rời bỏ) — lần này không phải im lặng mà là **từ chối chủ động, rõ ràng**.
+
+### 13.2 Ngày 25/11/2026
+
+- **Không có review mới** (review mới nhất vẫn là ngày 17/11, review_id 2432106).
+- **Không có ca churn mới.** Đã rà toàn bộ hội thoại Crisp mở/cập nhật trong ngày 25/11 (list 3 trang + tìm theo từ khoá "uninstall"); không có hội thoại nào chứa gỡ app, hạ gói, huỷ gói, xin refund, hoặc phản hồi tiêu cực rõ rệt tới automated win-back email. Các hội thoại đáng chú ý trong ngày đều là hỗ trợ kỹ thuật/hỏi tính năng bình thường (ví dụ: lỗi form "Notify Me" không submit trên shopterrae.com — đã được support trả lời, chưa thấy phản hồi tiếp; câu hỏi EComposer có làm PDP audit/CRO không — được giải thích rõ đây là page builder, không phải audit tool).
